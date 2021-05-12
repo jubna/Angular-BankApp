@@ -1,1 +1,314 @@
 /* You can add global styles to this file, and also import other style files */
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+  
+
+.header_first{
+    position: relative;
+    left: 160px;
+    top: 2px;
+    bottom: 2px;
+}
+
+.header_first a{
+    text-decoration: none;
+    text-align: center;
+}
+.header_second{
+    position: relative;
+    left: 190px;
+    top: 2px;
+    bottom: 2px;
+}
+.header_second a{
+    text-decoration: none;
+    
+}
+.header_img{
+    position: relative;
+    left: 160px;
+}
+.header_menu{
+   
+   font-weight: 700;
+    font-size: 15px;
+    line-height: 26px;
+    text-transform: uppercase;
+    
+}
+.navbar-dark {
+  background:#0d6fd1; 
+}
+
+
+  
+.bg-img {
+    /* The image used */
+    background-image: url("app/login/bg.jpg");
+  
+    min-height: 480px;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  /* Add styles to the form container */
+  .home_container {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    margin: 20px;
+    max-width: 300px;
+    padding: 16px;
+    background-color: white;
+  }
+ 
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit button */
+  .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .btn:hover {
+    opacity: 1;
+  }
+ 
+  /* Add styles to the form container */
+  
+  /* Full-width input fields */
+
+.forgot{
+    margin-top: 15px;
+    text-align: center;
+}
+.forgot a{
+    text-decoration: none;
+    color: #3b5998;
+    font-size: 17px;
+}
+.motto{
+    position: absolute;
+    top: 170px;
+    left: 60px;
+    color: #768a79;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 900;
+}
+.learn_button{
+    padding: 16px 27px;
+    font-weight: 600;
+    border-radius: 50px;
+    background: #30913f;
+    color:#fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: absolute;
+    top: 270px;
+    left: 70px;
+}
+    
+.learn_button:hover{
+    background: #fff;
+    color:#30913f;
+}
+#call{
+    padding: 16px 27px;
+    font-weight: 600;
+    border-radius: 50px;
+    background: #30913f;
+    color:#fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: absolute;
+    top: 270px;
+    left: 230px;
+
+}
+
+.profile {
+    margin: 20px 0;
+    min-height: 800px;
+  }
+  
+  /* Profile sidebar */
+  .profile-sidebar {
+    margin-top: 4px;
+    background: rgb(206, 224, 235);
+    height: 800px;
+    
+  }
+  
+  .profile-userpic img {
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+  }
+  
+  .profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .profile-usertitle-name {
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+  }
+  
+  .profile-usertitle-job {
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  .profile-userbuttons {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .profile-userbuttons .btn {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 15px;
+    margin-right: 5px;
+  }
+  
+  .profile-userbuttons .btn:last-child {
+    margin-right: 0px;
+  }
+      
+  .profile-usermenu {
+    margin-top: 30px;
+
+  }
+  #list{
+      background-color:rgb(194, 231, 255);
+      text-align: center;
+  }
+  #list ul li {
+    border-bottom: 1px solid #f0f4f7;
+  }
+  
+  
+  
+  #list a {
+    color: #338aee;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+  }
+  
+ 
+  #list a:hover {
+    color: #5b9bd1;
+  }
+  
+ 
+  @media screen and (max-width: 575px) {
+    .profile-sidebar{
+          height: 350px;
+        }
+    .profile-content{
+      height: 810px;
+    }
+   
+  }
+  @media screen and (max-width: 768px) {
+    .profile-sidebar{
+          height: 350px;
+        }
+    .profile-content{
+      height: 810px;
+    }
+   
+  }
+  @media screen and (min-width: 800px) {
+    .home_container {
+      /* Apply some styles */
+      width: 380px;
+      position: absolute;
+      right: 300px;
+    }
+  }
+  
+  /* Profile Content */
+  .profile-content {
+    padding: 10px;
+    background: #fff;
+   
+  }
+#balance{
+    width: 350px;
+    height: 80px;
+    background: #30913f;
+    color:#fff;
+    font-size: 26px;
+    padding: 10px;
+    display: none;
+}
+
+     .content{
+        border: 1px ridge;
+       
+        padding-top: 30px;
+        margin-bottom: 0;
+     }
+
+     .footer{
+         margin-top: 0;
+    height: 57px;
+       width: 100%;  
+       background:#0d6fd1; 
+       text-align: center;
+       line-height: 50px;
+       color: cornsilk;
+       position: fixed;
+       bottom: 0;
+    }
+    .welcome{
+        font-family: 'Merriweather', serif;
+        font-size:30px;  
+       color:#276baf; 
+  
+    }
+
+    #myTab{
+        font-family: 'Merriweather', serif;
+        font-size: 17px;
+
+    }
+    
