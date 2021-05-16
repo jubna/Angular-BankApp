@@ -47,7 +47,7 @@
 
       <div class="form-group">
         <label for="account" class="form-label" >Account NO</label>
-        <input type="text" class="form-control" id="acno" [value]="acno" (change)="accnoChange($event)" >
+        <input type="text" class="form-control" id="acno" #acno>
       </div>
      <!--  <div class="form-group row">
         <label for="username" class="form-label">Username</label>
@@ -55,12 +55,12 @@
       </div> -->
       <div class="form-group">
         <label for="password" class="form-label" >Password</label>
-        <input type="password" class="form-control" id="password" (change)="pwdChange($event)"  >
+        <input type="password" class="form-control" id="password" #pwd>
       </div>
   
       
   
-      <button type="submit" class="btn" (click)=login()>Login</button>
+      <button type="submit" class="btn" (click)=login(acno,pwd)>Login</button>
       <div class="forgot"><a href="#">Forgot passwrod?</a> </div>
     </form>
   </div>
