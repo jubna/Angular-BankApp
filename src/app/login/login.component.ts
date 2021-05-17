@@ -9,9 +9,8 @@ export class LoginComponent implements OnInit {
 
 
       aim="your perfect banking partner"
-      acno=""
-      password=""
-
+      acno="account no"
+      pswd=""
       accountDetails = {
         1000: { acno: 1000,  username: "userone", password: "userone", balance: 50000 },
         1001: { acno: 1001,  username: "usertwo", password: "usertwo", balance: 5000 },
@@ -22,9 +21,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  login(a:any,b:any){
-    var acno=a.value;
-    var pwd=b.value;
+  login(){
+    var acno=this.acno;
+    var pwd=this.pswd;
     let users=this.accountDetails;
     if(acno in users){
       if (pwd == users[acno]["password"]) {
