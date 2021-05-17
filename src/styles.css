@@ -49,7 +49,7 @@ html, body{
     /* The image used */
     background-image: url("app/login/bg.jpg");
   
-    min-height: 480px;
+    min-height: 520px;
   
     /* Center and scale the image nicely */
     background-position: center;
@@ -96,6 +96,20 @@ html, body{
   .btn:hover {
     opacity: 1;
   }
+  .btnB  {
+    margin-top: 5px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .btnB:hover {
+    opacity: 1;
+  }
+ 
  
   /* Add styles to the form container */
   
