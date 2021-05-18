@@ -41,7 +41,7 @@
          
         </div>
         <div class="col-12 col-md-6">
-    <form action="" class="home_container">
+    <form (ngSubmit)="register()" class="home_container">
       <h1>Login</h1>
     
 
@@ -57,7 +57,7 @@
         <label for="password" class="form-label" >Password</label>
         <input type="password" class="form-control" id="password" [(ngModel)]="pswd" name="pswd">
       </div>
-      <button type="submit" class="btn" (click)=register()>Submit</button>
-     
+      <button type="submit" class="btn">Submit</button>
+      <a routerLink="">Log in</a>
     </form>
   </div>

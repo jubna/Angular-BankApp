@@ -83,7 +83,7 @@ html, body{
   }
   
   /* Set a style for the submit button */
-  .btn {
+  .btnG {
     background-color: #04AA6D;
     color: white;
     padding: 10px 20px;
@@ -93,7 +93,7 @@ html, body{
     opacity: 0.9;
   }
   
-  .btn:hover {
+  .btnG:hover {
     opacity: 1;
   }
   .btnB  {

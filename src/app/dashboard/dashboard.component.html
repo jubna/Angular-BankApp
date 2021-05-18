@@ -1,1 +1,153 @@
-<p>dashboard works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-9">
+            <div class="profile-content">
+ 
+                <div class="welcome">Welcome to your page!</div>
+                <!-- tabs bar -->
+               <ul class="nav nav-tabs" id="myTab" role="tablist">
+                 <li class="nav-item" role="presentation">
+                   <button class="nav-link active" id="act-tab" data-bs-toggle="tab" data-bs-target="#act_details" type="button" role="tab" aria-controls="home" aria-selected="true">Account Details</button>
+                 </li>
+                 <li class="nav-item" role="presentation">
+                   <button class="nav-link" id="bal-tab" data-bs-toggle="tab" data-bs-target="#checkBalance" type="button" role="tab" aria-controls="profile" aria-selected="false">Check your Balance</button>
+                 </li>
+                 <li class="nav-item" role="presentation">
+                   <button class="nav-link" id="withdraw-tab" data-bs-toggle="tab" data-bs-target="#withdraw" type="button" role="tab" aria-controls="contact" aria-selected="false">Withdraw</button>
+                 </li>
+                 <li class="nav-item" role="presentation">
+                   <button class="nav-link" id="deposit-tab" data-bs-toggle="tab" data-bs-target="#deposit" type="button" role="tab" aria-controls="contact" aria-selected="false">Deposit</button>
+                 </li>
+               </ul>
+               
+               <div class="tab-content" id="myTabContent">
+                 <!-- my account -->
+                 <div class="tab-pane fade show active" id="act_details" role="tabpanel" aria-labelledby="act-tab">
+                   <div class="col-12 col-sm-9 m-5">
+                     <h3>My Accounts: Overview</h3>
+                     <div class="table-responsive">
+                       <table class="table table-striped">
+                           <thead class="table-dark">
+                               <tr>
+                                   <th>Account number</th>
+                                   <th>Name</th>
+                                   <th>Type</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                               <tr>
+                                   <th>xxx</th>
+                                   <td>xx</td>
+                                   <td>xx</td>
+                                
+                               </tr>
+                               </tbody>
+                               </table>
+                               </div>
+                 </div>
+                 </div>
+               <!--check balance  -->
+                 <div class="tab-pane fade" id="checkBalance" role="tabpanel" aria-labelledby="bal-tab">
+                   
+                   <h3>Check your available balance</h3>
+                   <p>Please enter your username and password once again.</p>
+                   <div class="row m-4">
+                     <div class="col-12 col-sm-6 m-3">
+                     <div class="card login m-1" >
+                       <div class="card-body">
+                       <form class="form">
+                         <div class="form-group row">
+                           <label for="account" class="form-label">Account NO</label>
+                           <input type="text" class="form-control" id="acno">
+                         </div>
+                           <div class="form-group row">
+                             <label for="username" class="form-label">Username</label>
+                             <input type="text" class="form-control" id="username">
+                           </div>
+                           <div class="form-group row">
+                             <label for="password" class="form-label">Password</label>
+                             <input type="password" class="form-control" id="password">
+                           </div>
+                           <div class="form-group row">
+                             <button type="button" class="btn btn-success" id="checkBalance" onclick="Bank.checkBalance()">Check Balance</button>
+                           </div>
+                       </form>
+                       <div class="forgot"><a href="#">Forgot passwrod?</a> </div>
+               </div>
+               </div>
+               </div>
+               <div class="col-12 col-sm-4 m-3">
+                 <div id="balance"></div>
+                 </div>
+                 </div>
+                 </div>
+               <!--withdrw-->
+                 <div class="tab-pane fade" id="withdraw" role="tabpanel" aria-labelledby="withdraw-tab">
+                  <div class="row">
+                   <div class="col-12 m-3">
+                     <h3>withraw money</h3>
+                  </div>
+                  <div class="col-12 col-sm-9">
+                   <form>
+                     <div class="form-group row">
+                       <label for="account" class="col-md-1 form-label">Account NO</label>
+                       <div class="col-md-7">
+                       <input type="text" class="form-control" id="account">
+                       </div>
+                     </div> 
+                       <div class="form-group row">
+                           <label for="amount" class="col-md-1 col-form-label">Amount:</label>
+                           <div class="col-md-7">
+                           <input type="text" class="form-control" id="amount" placeholder="Enter money to withdraw" name="amount">
+                           </div>
+                             <button type="button" class="btn btn-success col-3" id="withdraw" onclick="Bank.withdraw()">Check Balance</button>
+                           
+                       </div>
+                       </form>
+                       </div>
+                       <div class="row">
+                       <div class="col-12 col-sm-4 m-3">
+                         <div id="msg"></div>
+                         </div>
+                         </div>
+                 </div>
+               </div> 
+                      
+               <!--deposit-->
+               <div class="tab-pane fade" id="deposit" role="tabpanel" aria-labelledby="deposit-tab">
+                 <div class="row">
+                   <div class="col-12 m-3">
+                    <h3>Deposit money</h3>
+                  </div>
+                  <div class="col-12 col-sm-9">
+                   <form>
+                     <div class="form-group row">
+                       <label for="account" class="col-md-1 form-label">Account NO</label>
+                       <div class="col-md-7">
+                       <input type="text" class="form-control" id="account">
+                       </div>
+                     </div> 
+                     <div class="form-group row">
+                       <label for="amount_dep" class="col-md-1 col-form-label">Amount:</label>
+                       <div class="col-md-7">
+                       <input type="text" class="form-control" id="amount_dep" placeholder="Enter money to deposit" name="amount_dep">
+                       </div>
+                             <button type="button" class="btn btn-success col-md-3" id="deposit" onclick="Bank.deposit()">Submit</button>
+                           
+                       </div>
+                       </form>
+                       </div>
+                       <div class="row">
+                       <div class="col-12 col-sm-4 m-3">
+                         <div id="msg_dep"></div>
+                         </div>
+                         </div>
+                 </div> 
+               </div> 
+               </div>
+               </div>
+               
+               </div>
+               </div>
+               </div>
+       
