@@ -88,19 +88,25 @@
                      <h3>withraw money</h3>
                   </div>
                   <div class="col-12 col-sm-9">
-                   <form>
+                   <form (ngSubmit)="withdraw()">
                      <div class="form-group row">
-                       <label for="account" class="col-md-1 form-label">Account NO</label>
+                       <label for="account" class="col-md-2 form-label">Account NO</label>
                        <div class="col-md-7">
-                       <input type="text" class="form-control" id="account">
+                       <input type="text" class="form-control" id="account" [(ngModel)]="w_account" name="account">
                        </div>
                      </div> 
+                     <div class="form-group row">
+                      <label for="password" class="col-md-2 form-label">Password</label>
+                      <div class="col-md-7">
+                      <input type="password" class="form-control" id="password" [(ngModel)]="w_password" name="password">
+                      </div>
+                    </div> 
                        <div class="form-group row">
-                           <label for="amount" class="col-md-1 col-form-label">Amount:</label>
+                           <label for="amount" class="col-md-2 col-form-label">Amount:</label>
                            <div class="col-md-7">
-                           <input type="text" class="form-control" id="amount" placeholder="Enter money to withdraw" name="amount">
+                           <input type="text" class="form-control" id="amount" placeholder="Enter money to withdraw" name="amount" [(ngModel)]="w_amount">
                            </div>
-                             <button type="button" class="btn btn-success col-3" id="withdraw" onclick="Bank.withdraw()">Check Balance</button>
+                             <button type="submit" class="btn btn-success col-3" id="withdraw" >Withdraw</button>
                            
                        </div>
                        </form>
@@ -120,19 +126,25 @@
                     <h3>Deposit money</h3>
                   </div>
                   <div class="col-12 col-sm-9">
-                   <form>
+                   <form (ngSubmit)="deposit()">
                      <div class="form-group row">
-                       <label for="account" class="col-md-1 form-label">Account NO</label>
+                       <label for="account" class="col-md-2 form-label">Account NO</label>
                        <div class="col-md-7">
-                       <input type="text" class="form-control" id="account">
+                       <input type="text" class="form-control" id="account"[(ngModel)]="d_account" name="account">
                        </div>
                      </div> 
                      <div class="form-group row">
-                       <label for="amount_dep" class="col-md-1 col-form-label">Amount:</label>
+                      <label for="password" class="col-md-2 form-label" >Password</label>
+                      <div class="col-md-7">
+                      <input type="password" class="form-control" id="password" [(ngModel)]="d_password" name="password">
+                      </div>
+                    </div> 
+                     <div class="form-group row">
+                       <label for="amount_dep" class="col-md-2 col-form-label">Amount:</label>
                        <div class="col-md-7">
-                       <input type="text" class="form-control" id="amount_dep" placeholder="Enter money to deposit" name="amount_dep">
+                       <input type="text" class="form-control" id="amount_dep" placeholder="Enter money to deposit" name="amount_dep" [(ngModel)]="d_amount">
                        </div>
-                             <button type="button" class="btn btn-success col-md-3" id="deposit" onclick="Bank.deposit()">Submit</button>
+                             <button type="submit" class="btn btn-success col-md-3" id="deposit">Deposit</button>
                            
                        </div>
                        </form>

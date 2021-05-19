@@ -48,4 +48,43 @@ export class DataService {
     
     }
   }
+
+  deposit(acno:any,pwd:any,amt:any){
+    var user=this.accountDetails;
+    if(acno in user){
+      if(pwd == user[acno]["password"]){
+        var bal=user[acno]["balance"];
+        bal+=parseInt(amt);
+         return bal;
+      }
+      else{
+        alert("invalid username or password");
+       }
+    }
+    else{
+      alert("invalid account number");
+    }
+  }
+
+  withdraw(acno:any,pwd:any,amt:any){
+    var user=this.accountDetails;
+    if(acno in user){
+      if(pwd == user[acno]["password"]){
+        var bal=user[acno]["balance"];
+          if(amt<bal){
+            bal-=amt;
+            return bal;
+          }
+          else{
+            return false;
+          }
+  }
+  else{
+    alert("invalid username or password");
+   }
+}
+else{
+  alert("invalid account number");
+}
+}
 }
