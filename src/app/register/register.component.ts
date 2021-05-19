@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -9,19 +10,28 @@ import { DataService } from '../services/data.service';
 })
 export class RegisterComponent implements OnInit {
 
-  acno=""
-  uname=""
-  pswd=""
+ // acno=""
+  //uname=""
+  //pswd="" 
 
-  constructor(private router:Router, private dataService:DataService) { }
+  registerForm=this.fb.group({
+   uname:['',Validators.required,Validators.pattern('[a-zA-Z]*')],
+   acno:['',Validators.required,Validators.pattern('[0-9]*')],
+   pswd:['',Validators.required,Validators.pattern('[a-zA-Z0-9]*')]
+  })
+  constructor(private router:Router, private dataService:DataService, private fb:FormBuilder) { }
 
   ngOnInit(): void {
   }
    register(){
-
-    var uname=this.uname;
-    var acno=this.acno;
-    var pswd=this.pswd;
+      if(this.registerForm.get('uname')?.errors){
+        document.getElementById("err").style.display="block";
+        document.getElementById("err").innerHTML="invalid username";
+      }
+   if(this.registerForm.valid){
+    var uname=this.registerForm.value.uname;
+    var acno=this.registerForm.value.acno;
+    var pswd=this.registerForm.value.pswd;
     var result=this.dataService.register(uname,acno,pswd);
   if(result==false){
     alert("User exist, please login");
@@ -31,4 +41,6 @@ export class RegisterComponent implements OnInit {
       this.router.navigateByUrl("");
     }
    }
+  }
+  
 }
