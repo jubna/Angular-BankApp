@@ -14,20 +14,19 @@ export class RegisterComponent implements OnInit {
   //uname=""
   //pswd="" 
 
-  registerForm=this.fb.group({
-   uname:['',Validators.required,Validators.pattern('[a-zA-Z]*')],
-   acno:['',Validators.required,Validators.pattern('[0-9]*')],
-   pswd:['',Validators.required,Validators.pattern('[a-zA-Z0-9]*')]
+   
+
+  registerForm = this.fb.group({
+    uname:['',[Validators.required,Validators.pattern('[a-zA-Z]*')]],
+    acno:['',[Validators.required,Validators.minLength(4),Validators.pattern('[0-9]*')]],
+    pswd:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]]
   })
   constructor(private router:Router, private dataService:DataService, private fb:FormBuilder) { }
 
   ngOnInit(): void {
   }
    register(){
-      if(this.registerForm.get('uname')?.errors){
-        document.getElementById("err").style.display="block";
-        document.getElementById("err").innerHTML="invalid username";
-      }
+   
    if(this.registerForm.valid){
     var uname=this.registerForm.value.uname;
     var acno=this.registerForm.value.acno;
@@ -41,6 +40,12 @@ export class RegisterComponent implements OnInit {
       this.router.navigateByUrl("");
     }
    }
+   else{
+
+    alert("Invalid Form")
+
   }
+  }
+ 
   
 }

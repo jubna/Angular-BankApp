@@ -47,17 +47,19 @@
       <div class="form-group">
         <label for="account" class="form-label" >Account NO</label>
         <input type="text" class="form-control" id="acno" formControlName="acno" name="acno">
+        <div  *ngIf="(registerForm.get('acno')?.touched || registerForm.get('acno')?.dirty) && registerForm.get('acno')?.errors" class="error">Invalid account no</div>
       </div>
      <div class="form-group">
         <label for="username" class="form-label">Username</label>
         <input type="text" class="form-control" id="username" formControlName="uname" name="uname">
-        <p class="error" id="err"></p>
+        <div  *ngIf="(registerForm.get('uname')?.touched || registerForm.get('uname')?.dirty) && registerForm.get('uname')?.errors" class="error">Invalid user name</div>
       </div>
       <div class="form-group">
         <label for="password" class="form-label" >Password</label>
         <input type="password" class="form-control" id="password" formControlName="pswd" name="pswd">
+        <div  *ngIf="(registerForm.get('pswd')?.touched || registerForm.get('pswd')?.dirty) && registerForm.get('pswd')?.errors" class="error">Invalid password</div>
       </div>
-      <button type="submit" class="btn">Submit</button>
+      <button type="submit" class="btnG">Submit</button>
       <a routerLink="">Log in</a>
     </form>
   </div>

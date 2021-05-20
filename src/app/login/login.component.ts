@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -14,14 +15,22 @@ export class LoginComponent implements OnInit {
       acno="account no"
       pswd=""
      
-  constructor(private router:Router, private dataService:DataService) {}
+      loginForm = this.fb.group({
+       
+        acno:['',[Validators.required,Validators.minLength(4),Validators.pattern('[0-9]*')]],
+        pswd:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]]
+      })
+  constructor(private router:Router, private dataService:DataService, private fb:FormBuilder) {}
 
   ngOnInit(): void {
   }
   login(){
-    var acno=this.acno;
-    var pwd=this.pswd;
-    let result=this.dataService.login(acno,pwd);
+   
+    if(this.loginForm.valid){
+    
+      var acno=this.loginForm.value.acno;
+      var pswd=this.loginForm.value.pswd;
+    let result=this.dataService.login(acno,pswd);
    if(result==1){
     alert("success")
     this.router.navigateByUrl("dashboard")
@@ -33,6 +42,12 @@ export class LoginComponent implements OnInit {
     alert("invalid account number");
    }
     }
+     else{
+
+      alert("Invalid Form")
+  
+    } 
+  }
   
 /*   accnoChange(event:any){
     this.acno=event.target.value;

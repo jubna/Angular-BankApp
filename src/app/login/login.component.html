@@ -41,13 +41,14 @@
          
         </div>
         <div class="col-12 col-md-6">
-    <form (ngSubmit)="login()" class="home_container">
+    <form  [formGroup]="loginForm" (ngSubmit)="login()" class="home_container">
       <h1>Login</h1>
       <h6>{{aim}}</h6>
 
       <div class="form-group">
         <label for="account" class="form-label" >Account NO</label>
-        <input type="text" class="form-control" id="acno" [(ngModel)]="acno" name="acno">
+        <input type="text" class="form-control" id="acno"  formControlName="acno" name="acno">
+        <div  *ngIf="(loginForm.get('acno')?.touched || loginForm.get('acno')?.dirty) && loginForm.get('acno')?.errors" class="error">Invalid account no</div>
       </div>
      <!--  <div class="form-group row">
         <label for="username" class="form-label">Username</label>
@@ -55,7 +56,9 @@
       </div> -->
       <div class="form-group">
         <label for="password" class="form-label" >Password</label>
-        <input type="password" class="form-control" id="password" [(ngModel)]="pswd" name="pswd">
+        <input type="password" class="form-control" id="password" formControlName="pswd" name="pswd">
+        <div  *ngIf="(loginForm.get('pswd')?.touched || loginForm.get('pswd')?.dirty) && loginForm.get('pswd')?.errors" class="error">Invalid password</div>
+        
       </div>
   
       
