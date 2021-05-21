@@ -8,13 +8,15 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  w_account="";
+ /*  w_account="";
   w_password="";
   w_amount="";
   d_amount="";
   d_password="";
   d_account="";
+ */
 
+  user=this.dataService.currentUser;
   withdrawForm = this.fb.group({
        
     w_account:['',[Validators.required,Validators.minLength(4),Validators.pattern('[0-9]*')]],
@@ -41,8 +43,8 @@ export class DashboardComponent implements OnInit {
      let result=this.dataService.deposit(acno,pwd,amt);
 
      if(result){
-       
-      document.getElementById("msg_dep").innerHTML=`You account has been deposited  with amount ${amt}, available bal: ${result}`;
+       alert(`You account has been deposited  with amount ${amt}, available bal: ${result}`);
+     document.getElementById("msg_dep").innerHTML=`You account has been deposited  with amount ${amt}, available bal: ${result}`;
      }
   }
   else{
@@ -60,10 +62,12 @@ export class DashboardComponent implements OnInit {
     
      let result=this.dataService.withdraw(acno,pwd,amt);
      if(result){
-      document.getElementById("msg").innerHTML=`You account has been withdrawn with amount ${amt}, available bal: ${result}`;
+     alert(`You account has been withdrawn with amount ${amt}, available bal: ${result}`);
+     document.getElementById("msg").innerHTML=`You account has been withdrawn with amount ${amt}, available bal: ${result}`;
      }
      else{
-      document.getElementById("msg").innerHTML=`You account balance is low`;
+       alert(`You account balance is low`);
+     document.getElementById("msg").innerHTML=`You account balance is low`;
      }
   }
   else{

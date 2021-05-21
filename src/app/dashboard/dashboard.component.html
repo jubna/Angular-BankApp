@@ -3,7 +3,7 @@
         <div class="col-12 col-md-9">
             <div class="profile-content">
  
-                <div class="welcome">Welcome to your page!</div>
+                <div class="welcome">Welcome {{user}}</div>
                 <!-- tabs bar -->
                <ul class="nav nav-tabs" id="myTab" role="tablist">
                  <li class="nav-item" role="presentation">
@@ -92,21 +92,21 @@
                      <div class="form-group row">
                        <label for="account" class="col-md-2 form-label">Account NO</label>
                        <div class="col-md-7">
-                       <input type="text" class="form-control" id="account" formControlName="w_account" name="account">
+                       <input type="text" class="form-control" id="w_account" formControlName="w_account" name="account">
                        <div  *ngIf="(withdrawForm.get('w_account')?.touched || withdrawForm.get('w_account')?.dirty) && withdrawForm.get('w_account')?.errors" class="error">Invalid account no</div>
                        </div>
                      </div> 
                      <div class="form-group row">
                       <label for="password" class="col-md-2 form-label">Password</label>
                       <div class="col-md-7">
-                      <input type="password" class="form-control" id="password" formControlName="w_password" name="password">
+                      <input type="password" class="form-control" id="w_password" formControlName="w_password" name="password">
                       <div  *ngIf="(withdrawForm.get('w_password')?.touched || withdrawForm.get('w_password')?.dirty) && withdrawForm.get('w_password')?.errors" class="error">Invalid password</div>
                       </div>
                     </div> 
                        <div class="form-group row">
                            <label for="amount" class="col-md-2 col-form-label">Amount:</label>
                            <div class="col-md-7">
-                           <input type="text" class="form-control" id="amount" placeholder="Enter money to withdraw" name="amount" formControlName="w_amount">
+                           <input type="text" class="form-control" id="w_amount" placeholder="Enter money to withdraw" name="amount" formControlName="w_amount">
                            <div  *ngIf="(withdrawForm.get('w_password')?.touched || withdrawForm.get('w_password')?.dirty) && withdrawForm.get('w_password')?.errors" class="error">Invalid amount</div>
                           </div>
                              <button type="submit" class="btn btn-success col-3" id="withdraw" >Withdraw</button>
@@ -118,7 +118,7 @@
                        <div class="col-12 col-sm-4 m-3">
                          <div id="msg"></div>
                          </div>
-                         </div>
+                         </div> 
                  </div>
                </div> 
                       
@@ -133,14 +133,14 @@
                      <div class="form-group row">
                        <label for="account" class="col-md-2 form-label">Account NO</label>
                        <div class="col-md-7">
-                       <input type="text" class="form-control" id="account" formControlName="d_account" name="account">
+                       <input type="text" class="form-control" id="d_account" formControlName="d_account" name="account">
                        <div  *ngIf="(depositForm.get('d_account')?.touched || depositForm.get('d_account')?.dirty) && depositForm.get('d_account')?.errors" class="error">Invalid account no</div>
                        </div>
                      </div> 
                      <div class="form-group row">
                       <label for="password" class="col-md-2 form-label" >Password</label>
                       <div class="col-md-7">
-                      <input type="password" class="form-control" id="password" formControlName="d_password" name="password">
+                      <input type="password" class="form-control" id="d_password" formControlName="d_password" name="password">
                       <div  *ngIf="(depositForm.get('d_password')?.touched || depositForm.get('d_password')?.dirty) && depositForm.get('d_password')?.errors" class="error">Invalid password</div>
                       </div>
                     </div> 
@@ -155,11 +155,11 @@
                        </div>
                        </form>
                        </div>
-                       <div class="row">
+                        <div class="row">
                        <div class="col-12 col-sm-4 m-3">
                          <div id="msg_dep"></div>
                          </div>
-                         </div>
+                         </div> 
                  </div> 
                </div> 
                </div>
