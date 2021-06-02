@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   d_account="";
  */
 
-  user=this.dataService.currentUser;
+  user:any;
   withdrawForm = this.fb.group({
        
     w_account:['',[Validators.required,Validators.minLength(4),Validators.pattern('[0-9]*')]],
@@ -30,7 +30,9 @@ export class DashboardComponent implements OnInit {
     d_amount:['',[Validators.required,Validators.pattern('[0-9]*')]]
   })
 
-  constructor( private dataService:DataService,private fb:FormBuilder) { }
+  constructor( private dataService:DataService,private fb:FormBuilder) { 
+    this.user=localStorage.getItem("name")
+  }
 
   ngOnInit(): void {
   }

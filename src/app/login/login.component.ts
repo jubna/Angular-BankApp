@@ -31,7 +31,20 @@ export class LoginComponent implements OnInit {
       var acno=this.loginForm.value.acno;
       var pswd=this.loginForm.value.pswd;
     let result=this.dataService.login(acno,pswd);
-   if(result==1){
+
+    this.dataService.login(acno,pswd)
+    .subscribe((result:any)=>{
+      if(result){
+        alert(result.message),
+        localStorage.setItem("name",result.name)
+        this.router.navigateByUrl("dashboard")
+      }
+    },
+    (result)=>{
+      alert(result.error.message)
+    })
+  }
+   /* if(result==1){
     alert("success")
     this.router.navigateByUrl("dashboard")
    }
@@ -41,7 +54,7 @@ export class LoginComponent implements OnInit {
    else{
     alert("invalid account number");
    }
-    }
+    } */
      else{
 
       alert("Invalid Form")

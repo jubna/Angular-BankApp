@@ -31,15 +31,26 @@ export class RegisterComponent implements OnInit {
     var uname=this.registerForm.value.uname;
     var acno=this.registerForm.value.acno;
     var pswd=this.registerForm.value.pswd;
-    var result=this.dataService.register(uname,acno,pswd);
-  if(result==false){
+
+    this.dataService.register(uname,acno,pswd)
+    .subscribe((result:any)=>{
+      if(result){
+        alert(result.message),
+        this.router.navigateByUrl("");
+      }
+    },
+    (result)=>{
+      alert(result.error.message)
+    })
+  }
+ /*  if(result==false){
     alert("User exist, please login");
   }
     else{
       alert("Successfully Registerd");
       this.router.navigateByUrl("");
-    }
-   }
+    } */
+   
    else{
 
     alert("Invalid Form")

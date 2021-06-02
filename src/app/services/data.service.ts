@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -15,7 +16,7 @@ export class DataService {
   };
   
  
-  constructor() {
+  constructor( private http:HttpClient) {
     this.getDetails();
    }
 
@@ -54,7 +55,16 @@ export class DataService {
 
 
   register(uname:any,acno:any,pswd:any){
-   var user=this.accountDetails;
+       
+      const data={
+      uname,
+      acno,
+      pswd
+      }
+
+     return this.http.post("http://localhost:3000/register/",data)
+
+   /* var user=this.accountDetails;
     if(acno in user){
      
       return false;
@@ -69,11 +79,18 @@ export class DataService {
       this.saveDetails()
       return true;
       
-    }
+    } */
   }
 
   login(acno:any,pswd:any){
-  var users=this.accountDetails;
+
+    const data={
+      acno,
+      pswd
+      }
+
+     return this.http.post("http://localhost:3000/login/",data)
+ /*  var users=this.accountDetails;
     if(acno in users){
       if (pswd == users[acno]["password"]) {
         this.currentUser=users[acno]["username"];
@@ -89,7 +106,7 @@ export class DataService {
     else{
       return -1;
     
-    }
+    } */
   }
 
   deposit(acno:any,pwd:any,amt:any){
