@@ -1,13 +1,23 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 
+
+ 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class DataService {
 
 
   currentUser="";
+   
+  options={
+    withCredentials: true
+  }
+  
+  
   accountDetails:any = {
     1000: { acno: 1000,  username: "userone", password: "userone", balance: 50000 },
     1001: { acno: 1001,  username: "usertwo", password: "usertwo", balance: 5000 },
@@ -89,7 +99,7 @@ export class DataService {
       pswd
       }
 
-     return this.http.post("http://localhost:3000/login/",data)
+      return this.http.post('http://localhost:3000/login',data,this.options)
  /*  var users=this.accountDetails;
     if(acno in users){
       if (pswd == users[acno]["password"]) {
@@ -109,7 +119,16 @@ export class DataService {
     } */
   }
 
-  deposit(acno:any,pwd:any,amt:any){
+  deposit(acno:any,pswd:any,amt:any){
+
+    const data={
+      acno,
+      pswd,
+      amt     
+      }
+
+     return this.http.post('http://localhost:3000/deposit',data,this.options)
+   /* var users=this.accountDetails;
     var user=this.accountDetails;
     amt=parseInt(amt);
     if(acno in user){
@@ -127,11 +146,18 @@ export class DataService {
     else{
       alert("invalid account number");
       return false;
-    }
+    } */
   }
 
-  withdraw(acno:any,pwd:any,amt:any){
-    var user=this.accountDetails;
+  withdraw(acno:any,pswd:any,amt:any){
+    const data={
+      acno,
+      pswd,
+      amt     
+      }
+
+     return this.http.post('http://localhost:3000/withdraw/',data,this.options)
+    /* var user=this.accountDetails;
      amt=parseInt(amt);
     if(acno in user){
       if(pwd == user[acno]["password"]){
@@ -154,6 +180,7 @@ export class DataService {
 else{
   alert("invalid account number");
   return false;
+} */
 }
-}
+
 }

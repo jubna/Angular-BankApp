@@ -40,15 +40,26 @@ export class DashboardComponent implements OnInit {
     if(this.depositForm.valid){
     
       var acno=this.depositForm.value.d_account;
-      var pwd=this.depositForm.value.d_password;
+      var pswd=this.depositForm.value.d_password;
       var amt=this.depositForm.value.d_amount;
-     let result=this.dataService.deposit(acno,pwd,amt);
+    
+     this.dataService.deposit(acno,pswd,amt)
+     .subscribe((result:any)=>{
+       if(result){
+        document.getElementById("msg_dep").innerHTML=result.message;
+         
+       }
+     },
+     (result)=>{
+       alert(result.error.message)
+     })
+   }
 
-     if(result){
+     /* if(result){
        alert(`You account has been deposited  with amount ${amt}, available bal: ${result}`);
      document.getElementById("msg_dep").innerHTML=`You account has been deposited  with amount ${amt}, available bal: ${result}`;
      }
-  }
+  } */
   else{
     alert("invalid form")
   }
@@ -59,11 +70,21 @@ export class DashboardComponent implements OnInit {
     if(this.withdrawForm.valid){
     
       var acno=this.withdrawForm.value.w_account;
-      var pwd=this.withdrawForm.value.w_password;
+      var pswd=this.withdrawForm.value.w_password;
       var amt=this.withdrawForm.value.w_amount;
     
-     let result=this.dataService.withdraw(acno,pwd,amt);
-     if(result){
+      this.dataService.withdraw(acno,pswd,amt)
+      .subscribe((result:any)=>{
+        if(result){
+          document.getElementById("msg").innerHTML=result.message;
+          
+        }
+      },
+      (result)=>{
+        alert(result.error.message)
+      })
+    }
+    /*  if(result){
      alert(`You account has been withdrawn with amount ${amt}, available bal: ${result}`);
      document.getElementById("msg").innerHTML=`You account has been withdrawn with amount ${amt}, available bal: ${result}`;
      }
@@ -71,7 +92,7 @@ export class DashboardComponent implements OnInit {
        alert(`You account balance is low`);
      document.getElementById("msg").innerHTML=`You account balance is low`;
      }
-  }
+  } */
   else{
     alert("invalid form")
   }
