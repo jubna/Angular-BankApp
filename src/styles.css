@@ -288,11 +288,9 @@ html, body{
 #balance{
     width: 350px;
     height: 80px;
-    background: #30913f;
-    color:#fff;
+    color: #04AA6D;
     font-size: 26px;
     padding: 10px;
-    display: none;
 }
 
      .content{

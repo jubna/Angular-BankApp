@@ -4,6 +4,7 @@
             <div class="profile-content">
  
                 <div class="welcome">Welcome {{user}}</div>
+                <h6>Login time: {{lDate |  date:'medium'}}</h6>
                 <!-- tabs bar -->
                <ul class="nav nav-tabs" id="myTab" role="tablist">
                  <li class="nav-item" role="presentation">
@@ -18,6 +19,9 @@
                  <li class="nav-item" role="presentation">
                    <button class="nav-link" id="deposit-tab" data-bs-toggle="tab" data-bs-target="#deposit" type="button" role="tab" aria-controls="contact" aria-selected="false">Deposit</button>
                  </li>
+                 <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="transfer-tab" data-bs-toggle="tab" data-bs-target="#transfer" type="button" role="tab" aria-controls="contact" aria-selected="false">Transfer</button>
+                </li>
                </ul>
                
                <div class="tab-content" id="myTabContent">
@@ -25,25 +29,28 @@
                  <div class="tab-pane fade show active" id="act_details" role="tabpanel" aria-labelledby="act-tab">
                    <div class="col-12 col-sm-9 m-5">
                      <h3>My Accounts: Overview</h3>
-                     <div class="table-responsive">
+                     <div class="table-responsive" [ngClass]="acno?'style1':''">
                        <table class="table table-striped">
                            <thead class="table-dark">
                                <tr>
                                    <th>Account number</th>
                                    <th>Name</th>
-                                   <th>Type</th>
+                                   
                                </tr>
                            </thead>
                            <tbody>
                                <tr>
-                                   <th>xxx</th>
-                                   <td>xx</td>
-                                   <td>xx</td>
+                                   <th>{{login_acno}}</th>
+                                   <td>{{login_name}}</td>
+                                   
                                 
                                </tr>
                                </tbody>
                                </table>
                                </div>
+                               <app-deleteconfirm (onDelete)="onDelete($event)" (onCancel)="onCancel()" [item]="acno"></app-deleteconfirm>
+                               <br><br>
+                               <button type="submit" class="btn btn-success" (click)="deleteAcc()">Delete Account</button>
                  </div>
                  </div>
                <!--check balance  -->
@@ -55,28 +62,27 @@
                      <div class="col-12 col-sm-6 offset-3">
                      <div class="card login m-1" >
                        <div class="card-body">
-                       <form class="form">
+                       <form [formGroup]="BalanceForm" (ngSubmit)="checkBalance()">
                          <div class="form-group row">
                            <label for="account" class="form-label">Account NO</label>
-                           <input type="text" class="form-control" id="acno">
+                           <input type="text" class="form-control" id="c_account" formControlName="c_account" name="c_account">
+                           <div  *ngIf="(BalanceForm.get('c_account')?.touched || BalanceForm.get('c_account')?.dirty) && BalanceForm.get('c_account')?.errors" class="error">Invalid account no</div>
                          </div>
-                           <div class="form-group row">
-                             <label for="username" class="form-label">Username</label>
-                             <input type="text" class="form-control" id="username">
-                           </div>
+                          
                            <div class="form-group row">
                              <label for="password" class="form-label">Password</label>
-                             <input type="password" class="form-control" id="password">
+                             <input type="password" class="form-control" id="c_password" formControlName="c_password" name="c_password">
+                             <div  *ngIf="(BalanceForm.get('c_password')?.touched || BalanceForm.get('c_password')?.dirty) && BalanceForm.get('c_password')?.errors" class="error">Invalid password</div>
                            </div>
                            <div class="form-group row">
-                             <button type="button" class="btn btn-success" id="checkBalance" onclick="Bank.checkBalance()">Check Balance</button>
+                             <button type="submit" class="btn btn-success" id="checkBalance" >Check Balance</button>
                            </div>
                        </form>
                        <div class="forgot"><a href="#">Forgot passwrod?</a> </div>
                </div>
                </div>
                </div>
-               <div class="col-12 col-sm-4 m-3">
+               <div class="col-12 col-sm-6 m-3">
                  <div id="balance"></div>
                  </div>
                  </div>
@@ -109,8 +115,9 @@
                            <input type="text" class="form-control" id="w_amount" placeholder="Enter money to withdraw" name="amount" formControlName="w_amount">
                            <div  *ngIf="(withdrawForm.get('w_password')?.touched || withdrawForm.get('w_password')?.dirty) && withdrawForm.get('w_password')?.errors" class="error">Invalid amount</div>
                           </div>
+                          <div class="col-md-7 offset-2">
                              <button type="submit" class="btn btn-success col-3" id="withdraw" >Withdraw</button>
-                           
+                           </div>
                        </div>
                        </form>
                        </div>
@@ -150,8 +157,9 @@
                        <input type="text" class="form-control" id="amount_dep" placeholder="Enter money to deposit" name="amount_dep" formControlName="d_amount">
                        <div  *ngIf="(depositForm.get('d_amount')?.touched || depositForm.get('d_amount')?.dirty) && depositForm.get('d_amount')?.errors" class="error">Invalid amount</div>
                       </div>
+                      <div class="col-md-7 offset-2">
                              <button type="submit" class="btn btn-success col-md-3" id="deposit">Deposit</button>
-                           
+                         </div>  
                        </div>
                        </form>
                        </div>
@@ -162,6 +170,58 @@
                          </div> 
                  </div> 
                </div> 
+    
+                  <!--transfer-->
+                  <div class="tab-pane fade" id="transfer" role="tabpanel" aria-labelledby="transfer-tab">
+                    <div class="row">
+                     <div class="col-12 m-3">
+                       <h3>Transfer Money</h3>
+                    </div>
+                    <div class="col-12 col-sm-9">
+                     <form [formGroup]="transferForm" (ngSubmit)="transfer()">
+                       <div class="form-group row">
+                         <label for="account" class="col-md-2 form-label">Account NO</label>
+                         <div class="col-md-7">
+                         <input type="text" class="form-control" id="t_account" formControlName="t_account" name="t_account"  placeholder="Enter from account">
+                         <div  *ngIf="(transferForm.get('t_account')?.touched || transferForm.get('t_account')?.dirty) && transferForm.get('t_account')?.errors" class="error">Invalid account no</div>
+                         </div>
+                       </div> 
+                       <div class="form-group row">
+                        <label for="password" class="col-md-2 form-label">Password</label>
+                        <div class="col-md-7">
+                        <input type="password" class="form-control" id="t_password" formControlName="t_password" name="t_password">
+                        <div  *ngIf="(transferForm.get('t_password')?.touched || transferForm.get('t_password')?.dirty) && transferForm.get('t_password')?.errors" class="error">Invalid password</div>
+                        </div>
+                      </div> 
+                      <div class="form-group row">
+                        <label for="account" class="col-md-2 form-label">Account NO to transfer</label>
+                        <div class="col-md-7">
+                        <input type="text" class="form-control" id="tt_account" formControlName="tt_account" name="tt_account"  placeholder="Enter to account ">
+                        <div  *ngIf="(transferForm.get('tt_account')?.touched || transferForm.get('tt_account')?.dirty) && transferForm.get('tt_account')?.errors" class="error">Invalid account no</div>
+                        </div>
+                      </div> 
+                         <div class="form-group row">
+                             <label for="amount" class="col-md-2 col-form-label">Amount:</label>
+                             <div class="col-md-7">
+                             <input type="text" class="form-control" id="t_amount" placeholder="Enter money to transfer" name="t_amount" formControlName="t_amount">
+                             <div  *ngIf="(transferForm.get('t_amount')?.touched || transferForm.get('t_amount')?.dirty) && transferForm.get('t_amount')?.errors" class="error">Invalid amount</div>
+                            </div>
+                            <div class="col-md-7 offset-2">
+                               <button type="submit" class="btn btn-success col-3" id="withdraw" >Transfer</button>
+                             </div>
+                         </div>
+                         </form>
+                         </div>
+                         <div class="row">
+                         <div class="col-12 col-sm-4 m-3">
+                           <div id="msg"></div>
+                           </div>
+                           </div> 
+                   </div>
+                 </div> 
+               
+
+               
                </div>
                </div>
                

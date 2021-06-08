@@ -118,6 +118,15 @@ export class DataService {
     
     } */
   }
+  checkBalance(acno:any,pswd:any){
+
+    const data={
+      acno,
+      pswd 
+      }
+
+     return this.http.post('http://localhost:3000/checkBalance',data,this.options)
+    }
 
   deposit(acno:any,pswd:any,amt:any){
 
@@ -148,7 +157,15 @@ export class DataService {
       return false;
     } */
   }
-
+  transfer(acno:any,pswd:any,t_acno:any,amt:any){
+    const data={
+      acno,
+      pswd,
+      t_acno,
+      amt     
+      }
+      return this.http.post('http://localhost:3000/transfer/',data,this.options)
+  }
   withdraw(acno:any,pswd:any,amt:any){
     const data={
       acno,
@@ -181,6 +198,11 @@ else{
   alert("invalid account number");
   return false;
 } */
+}
+
+deleteAccDetails(acno:any){
+
+  return this.http.delete('http://localhost:3000/deleteAccDetails/'+acno,this.options)
 }
 
 }
