@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core';
-
+import {environment} from '../../environments/environment';
 
  
 @Injectable({
@@ -72,7 +72,7 @@ export class DataService {
       pswd
       }
 
-     return this.http.post("http://localhost:3000/register/",data)
+     return this.http.post(environment.apiUrl+"/register/",data)
 
    /* var user=this.accountDetails;
     if(acno in user){
@@ -99,7 +99,7 @@ export class DataService {
       pswd
       }
 
-      return this.http.post('http://localhost:3000/login',data,this.options)
+      return this.http.post(environment.apiUrl+"/login",data,this.options)
  /*  var users=this.accountDetails;
     if(acno in users){
       if (pswd == users[acno]["password"]) {
@@ -125,7 +125,7 @@ export class DataService {
       pswd 
       }
 
-     return this.http.post('http://localhost:3000/checkBalance',data,this.options)
+     return this.http.post(environment.apiUrl+"/checkBalance",data,this.options)
     }
 
   deposit(acno:any,pswd:any,amt:any){
@@ -136,7 +136,7 @@ export class DataService {
       amt     
       }
 
-     return this.http.post('http://localhost:3000/deposit',data,this.options)
+     return this.http.post(environment.apiUrl+"/deposit",data,this.options)
    /* var users=this.accountDetails;
     var user=this.accountDetails;
     amt=parseInt(amt);
@@ -157,14 +157,13 @@ export class DataService {
       return false;
     } */
   }
-  transfer(acno:any,pswd:any,t_acno:any,amt:any){
+  transfer(acno,t_acno:any,amt:any){
     const data={
       acno,
-      pswd,
       t_acno,
       amt     
       }
-      return this.http.post('http://localhost:3000/transfer/',data,this.options)
+      return this.http.post(environment.apiUrl+"/transfer/",data,this.options)
   }
   withdraw(acno:any,pswd:any,amt:any){
     const data={
@@ -173,7 +172,7 @@ export class DataService {
       amt     
       }
 
-     return this.http.post('http://localhost:3000/withdraw/',data,this.options)
+     return this.http.post(environment.apiUrl+"/withdraw/",data,this.options)
     /* var user=this.accountDetails;
      amt=parseInt(amt);
     if(acno in user){
@@ -202,7 +201,7 @@ else{
 
 deleteAccDetails(acno:any){
 
-  return this.http.delete('http://localhost:3000/deleteAccDetails/'+acno,this.options)
+  return this.http.delete(environment.apiUrl+"/deleteAccDetails/"+acno,this.options)
 }
 
 }

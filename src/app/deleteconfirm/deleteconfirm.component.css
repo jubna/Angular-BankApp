@@ -1,0 +1,9 @@
+.del{
+    border: 2px solid red;
+    margin-top: 30px;
+    width: 400px;
+    margin-bottom: -30px;
+}
+.del button{
+    margin: 5px;
+}

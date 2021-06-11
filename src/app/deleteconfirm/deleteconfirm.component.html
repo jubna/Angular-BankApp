@@ -1,6 +1,6 @@
 
- <div  *ngIf="item"> 
+ <div class="del" *ngIf="item"> 
     <p>Are you sure to delete your account? {{item}}</p>
-    <button (click)="delete()">Delete</button>
-    <button (click)="cancel()">Cancel</button>
+    <button (click)="delete()" class="btn btn-danger">Delete</button>
+    <button (click)="cancel()" class="btn btn-success">Cancel</button>
  </div> 

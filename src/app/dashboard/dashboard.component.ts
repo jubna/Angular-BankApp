@@ -37,8 +37,8 @@ export class DashboardComponent implements OnInit {
   })
   transferForm = this.fb.group({
        
-    t_account:['',[Validators.required,Validators.minLength(4),Validators.pattern('[0-9]*')]],
-    t_password:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]],
+     t_account:['',[Validators.required,Validators.minLength(4),Validators.pattern('[0-9]*')]],
+   /*    t_password:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]], */
     tt_account:['',[Validators.required,Validators.minLength(4),Validators.pattern('[0-9]*')]],
     t_amount:['',[Validators.required,Validators.pattern('[0-9]*')]]
   })
@@ -116,16 +116,15 @@ export class DashboardComponent implements OnInit {
 transfer(){
   if(this.transferForm.valid){
     
-    var acno=this.transferForm.value.t_account;
-    var pswd=this.transferForm.value.t_password;
+   var acno=this.transferForm.value.t_account;
+     /*  var pswd=this.transferForm.value.t_password; */
     var t_acno=this.transferForm.value.tt_account;
     var amt=this.transferForm.value.t_amount;
   
-   this.dataService.transfer(acno,pswd,t_acno,amt)
+   this.dataService.transfer(acno,t_acno,amt)
    .subscribe((result:any)=>{
      if(result){
-      document.getElementById("msg_dep").innerHTML=result.message;
-       
+      alert(result.message);
      }
    },
    (result)=>{

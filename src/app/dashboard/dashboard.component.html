@@ -3,8 +3,9 @@
         <div class="col-12 col-md-9">
             <div class="profile-content">
  
-                <div class="welcome">Welcome {{user}}</div>
-                <h6>Login time: {{lDate |  date:'medium'}}</h6>
+                <div appHighlight class="welcome">Welcome {{user}}</div>
+                <h6 appHighlight>Login time: {{lDate |  date:'medium'}}</h6>
+                <div class="logout"><a routerLink="">Logout</a> </div>
                 <!-- tabs bar -->
                <ul class="nav nav-tabs" id="myTab" role="tablist">
                  <li class="nav-item" role="presentation">
@@ -179,20 +180,20 @@
                     </div>
                     <div class="col-12 col-sm-9">
                      <form [formGroup]="transferForm" (ngSubmit)="transfer()">
-                       <div class="form-group row">
+                      <div class="form-group row">
                          <label for="account" class="col-md-2 form-label">Account NO</label>
                          <div class="col-md-7">
                          <input type="text" class="form-control" id="t_account" formControlName="t_account" name="t_account"  placeholder="Enter from account">
                          <div  *ngIf="(transferForm.get('t_account')?.touched || transferForm.get('t_account')?.dirty) && transferForm.get('t_account')?.errors" class="error">Invalid account no</div>
                          </div>
                        </div> 
-                       <div class="form-group row">
+                         <!--   <div class="form-group row">
                         <label for="password" class="col-md-2 form-label">Password</label>
                         <div class="col-md-7">
                         <input type="password" class="form-control" id="t_password" formControlName="t_password" name="t_password">
                         <div  *ngIf="(transferForm.get('t_password')?.touched || transferForm.get('t_password')?.dirty) && transferForm.get('t_password')?.errors" class="error">Invalid password</div>
                         </div>
-                      </div> 
+                      </div>  -->
                       <div class="form-group row">
                         <label for="account" class="col-md-2 form-label">Account NO to transfer</label>
                         <div class="col-md-7">
@@ -207,7 +208,7 @@
                              <div  *ngIf="(transferForm.get('t_amount')?.touched || transferForm.get('t_amount')?.dirty) && transferForm.get('t_amount')?.errors" class="error">Invalid amount</div>
                             </div>
                             <div class="col-md-7 offset-2">
-                               <button type="submit" class="btn btn-success col-3" id="withdraw" >Transfer</button>
+                               <button type="submit" class="btn btn-success col-3" id="transfer" >Transfer</button>
                              </div>
                          </div>
                          </form>

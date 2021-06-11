@@ -119,10 +119,13 @@ html, body{
     margin-top: 15px;
     text-align: center;
 }
-.forgot a{
+.forgot a,.logout a{
     text-decoration: none;
     color: #3b5998;
     font-size: 17px;
+}
+.logout{
+  text-align: right;
 }
 .motto{
     position: absolute;
